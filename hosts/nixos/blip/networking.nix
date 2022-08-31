@@ -2,5 +2,5 @@
 
 {
   networking.interfaces.eth0.useDHCP = true;
-  networking.hostName = "blop";
+  networking.hostName = "blip";
 }
