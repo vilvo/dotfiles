@@ -8,6 +8,7 @@
   programs = {
     bat.enable = true;
     htop.enable = true;
+    starship.enable = true;
 
     direnv = {
       enable = true;
