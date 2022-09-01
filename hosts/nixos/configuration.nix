@@ -19,9 +19,26 @@
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
 
-  services.xserver.enable = true;
+  # with desktop
+  services.xserver.videoDrivers = [ "nouveau" ]; # nvidia not supported by sway
+
   services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.displayManager.gdm.wayland = false;
+  services.xserver.desktopManager.plasma5.enable = true;
+
+  programs.sway = {
+    enable = true;
+    wrapperFeatures.gtk = true;
+    extraPackages = with pkgs; [
+      swaylock
+      alacritty
+    ];
+    extraSessionCommands = ''
+      export XDG_CURRENT_DESKTOP=sway
+      export XDG_SESSION_TYPE=wayland
+      systemctl --user import-environment
+    '';
+  };
 
   # Configure keymap in X11
   services.xserver = {

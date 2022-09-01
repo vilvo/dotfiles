@@ -8,9 +8,10 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
 
-  outputs = inputs@{ self, home-manager, nixpkgs, ... }:
+  outputs = inputs@{ self, home-manager, nixpkgs, nixpkgs-wayland, ... }:
     let user = "vilvo";
     in {
       nixosConfigurations = (
