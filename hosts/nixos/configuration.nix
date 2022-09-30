@@ -20,13 +20,24 @@
   i18n.defaultLocale = "en_US.utf8";
 
   services.xserver.enable = true;
-  services.xserver.displayManager.gdm.enable = true;
-  services.xserver.desktopManager.gnome.enable = true;
+  services.xserver.autorun = false;
+  services.xserver.displayManager.startx.enable = true;
 
-  # Configure keymap in X11
-  services.xserver = {
-    layout = "fi";
-    xkbVariant = "nodeadkeys";
+  # nmcli device wifi connect <SSID> password <password>
+  networking.networkmanager.enable = true;
+
+  services.dbus.enable = true;
+  xdg.portal = {
+    enable = true;
+    wlr.enable = true;
+    # gtk portal needed to make gtk apps happy
+    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+  };
+
+  programs.sway = {
+    enable = true;
+    extraPackages = with pkgs; [ swaylock swayidle ];
+    wrapperFeatures.gtk = true;
   };
 
   console.keyMap = "fi";
