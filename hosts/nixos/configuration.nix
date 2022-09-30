@@ -41,6 +41,8 @@
       swayidle
       alacritty
       dmenu
+      slurp
+      grim
     ];
     wrapperFeatures.gtk = true;
   };
