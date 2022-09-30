@@ -36,7 +36,12 @@
 
   programs.sway = {
     enable = true;
-    extraPackages = with pkgs; [ swaylock swayidle ];
+    extraPackages = with pkgs; [
+      swaylock
+      swayidle
+      alacritty
+      dmenu
+    ];
     wrapperFeatures.gtk = true;
   };
 
