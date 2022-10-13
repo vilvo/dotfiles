@@ -1,8 +1,10 @@
+
 { config, lib, pkgs, ... }:
 
 {
   home.packages = with pkgs; [
     tree
+    screen
   ];
 
   programs = {
