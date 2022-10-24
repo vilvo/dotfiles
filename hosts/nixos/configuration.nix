@@ -10,7 +10,7 @@
   users.users."${user}" = {
     isNormalUser = true;
     description = "${user}";
-    extraGroups = [ "networkmanager" "wheel" "dialout" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" ];
     packages = with pkgs; [ firefox google-chrome ];
   };
 
@@ -18,6 +18,9 @@
 
   # Select internationalisation properties.
   i18n.defaultLocale = "en_US.utf8";
+
+  virtualisation.libvirtd.enable = true;
+  programs.dconf.enable = true;
 
   services.xserver.enable = true;
   services.xserver.autorun = false;
