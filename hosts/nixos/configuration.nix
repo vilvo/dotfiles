@@ -14,6 +14,15 @@
     packages = with pkgs; [ firefox google-chrome ];
   };
 
+  services.emacs.package = pkgs.emacsUnstable;
+  nixpkgs.overlays = [
+    (import (builtins.fetchTarball {
+      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
+      sha256 = "0IGG8SK9AHksLraRK47S/0/gEOEjn1eQWor8UPjfQ4g=";
+    }))
+  ];
+  services.emacs.enable = true;
+
   time.timeZone = "Europe/Helsinki";
 
   # Select internationalisation properties.
