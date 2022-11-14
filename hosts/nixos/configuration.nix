@@ -11,14 +11,14 @@
     isNormalUser = true;
     description = "${user}";
     extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" ];
-    packages = with pkgs; [ firefox google-chrome ];
+    packages = with pkgs; [ firefox google-chrome pulseaudio ];
   };
 
   services.emacs.package = pkgs.emacsUnstable;
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      sha256 = "1k4v10937rcbbd1hzb2j14h6qdcnbxw2skh25paqsqzkm0l42zjn";
+      sha256 = "0mxqrczh3acdxzfq1kb2zr0mmdajv09r3wcd2429h12dqrdbdqpn";
     }))
   ];
   services.emacs.enable = true;
