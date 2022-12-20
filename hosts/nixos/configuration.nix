@@ -18,7 +18,7 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      sha256 = "19hf7l3wh34pc0cwf9njzd1lj1fggrpjjpycwg43ir7hs3fam53g";
+      sha256 = "1g5fs6xpv7ydf098cyxgamdh30n17lh9p8hs53765b2p147nphnw";
     }))
   ];
   services.emacs.enable = true;
@@ -110,11 +110,13 @@
     "http://binarycache.vedenemo.dev"
     "https://cache.dataaturservice.se/spectrum/"
     "https://cache.nixos.org/"
+    "https://nix-community.cachix.org"
   ];
   nix.settings.trusted-public-keys = [
     "binarycache.vedenemo.dev:Yclq5TKpx2vK7WVugbdP0jpln0/dPHrbUYfsH3UXIps="
     "spectrum-os.org-1:rnnSumz3+Dbs5uewPlwZSTP0k3g/5SRG4hD7Wbr9YuQ="
     "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
+    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
   ];
 
 }
