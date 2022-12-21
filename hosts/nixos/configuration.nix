@@ -10,7 +10,7 @@
   users.users."${user}" = {
     isNormalUser = true;
     description = "${user}";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" ];
+    extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" "wireshark" ];
     packages = with pkgs; [ firefox google-chrome pulseaudio ];
   };
 
@@ -18,7 +18,7 @@
   nixpkgs.overlays = [
     (import (builtins.fetchTarball {
       url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      sha256 = "1g5fs6xpv7ydf098cyxgamdh30n17lh9p8hs53765b2p147nphnw";
+      sha256 = "1mry7ljicx9ry3s9bs0j20ml2pndhs9hyqxzbv700d0bmq3lbdxb";
     }))
   ];
   services.emacs.enable = true;
