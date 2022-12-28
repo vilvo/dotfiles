@@ -15,6 +15,7 @@
   };
 
   services.emacs.enable = true;
+  boot.binfmt.emulatedSystems = [ "aarch64-linux" ];
 
   time.timeZone = "Europe/Helsinki";
 
