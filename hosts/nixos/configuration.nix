@@ -11,16 +11,9 @@
     isNormalUser = true;
     description = "${user}";
     extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" "wireshark" ];
-    packages = with pkgs; [ firefox google-chrome pulseaudio ];
+    packages = with pkgs; [ firefox google-chrome pulseaudio rustup emacs ];
   };
 
-  services.emacs.package = pkgs.emacsUnstable;
-  nixpkgs.overlays = [
-    (import (builtins.fetchTarball {
-      url = https://github.com/nix-community/emacs-overlay/archive/master.tar.gz;
-      sha256 = "1mry7ljicx9ry3s9bs0j20ml2pndhs9hyqxzbv700d0bmq3lbdxb";
-    }))
-  ];
   services.emacs.enable = true;
 
   time.timeZone = "Europe/Helsinki";
