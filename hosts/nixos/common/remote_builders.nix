@@ -1,7 +1,7 @@
-{ user, awsarmkey, ... }:
+{ user, path_to_remotebuilder_key, ... }:
 
 let
-  inherit user awsarmkey;
+  inherit user path_to_remotebuilder_key;
 in
 {
   nix.buildMachines = [
@@ -13,7 +13,7 @@ in
       supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
       mandatoryFeatures = [];
       sshUser = "${user}";
-      sshKey = "${awsarmkey}";
+      sshKey = "${path_to_remotebuilder_key}";
       publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0";
     }
   ];
