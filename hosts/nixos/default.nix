@@ -5,6 +5,11 @@
 let
   system = "x86_64-linux";
 
+  # ssh private key path for remote builds
+  # arg to generic common/remote_builders.nix module
+  # TODO: learn yubikeys with nixos
+  awsarmkey = "/home/${user}/.ssh/id_ed25519_arm_cloud";
+
   pkgs = import nixpkgs {
     inherit system;
     config.allowUnfree = true;
@@ -35,7 +40,7 @@ in {
 
   blip = lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs user; };
+    specialArgs = { inherit inputs user awsarmkey; };
     modules = [
       ./blip
       ./configuration.nix
