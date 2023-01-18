@@ -4,7 +4,8 @@
 
 {
   imports = [ (import ./hardware-configuration.nix) ]
-    ++ [ (import ./networking.nix) ];
+    ++ [ (import ./networking.nix) ]
+    ++ [ (import ./remote_builders.nix) ];
 
   # Bootloader.
   boot = {
