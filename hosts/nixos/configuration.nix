@@ -4,7 +4,7 @@
 {
   imports =
     [
-      # for all machines tbd
+      ./common/substituters.nix
     ];
 
   users.users."${user}" = {
@@ -94,18 +94,5 @@
     [
       git
     ];
-
-  nix.settings.substituters = [
-    "http://binarycache.vedenemo.dev"
-    "https://cache.dataaturservice.se/spectrum/"
-    "https://cache.nixos.org/"
-    "https://nix-community.cachix.org"
-  ];
-  nix.settings.trusted-public-keys = [
-    "binarycache.vedenemo.dev:Yclq5TKpx2vK7WVugbdP0jpln0/dPHrbUYfsH3UXIps="
-    "cache.nixos.org-1:6NCHdD59X431o0gWypbMrAURkbJ16ZPMQFGspcDShjY="
-    "nix-community.cachix.org-1:mB9FSh9qf2dCimDSUo8Zy7bkq5CX+/rkCWyvRCYg3Fs="
-    "awsarm.vedenemo.dev:OsgX+Jqb3w8dpodJIznsi0ByQIyk3opYbPvRERNduCo="
-  ];
 
 }
