@@ -1,0 +1,42 @@
+# SPDX-License-Identifier: Apache 2.0
+#
+# Use this module to import native remote builder
+# at remote to your development NixOS machine
+# requires: user and path_to_remotebuilder_key
+
+{ user, path_to_remotebuilder_key, ... }:
+
+let
+  inherit user path_to_remotebuilder_key;
+  remote = "awsarm.vedenemo.dev";
+in
+{
+  nix.buildMachines = [
+    {
+      hostName = "${remote}";
+      system = "aarch64-linux";
+      maxJobs = 16;
+      speedFactor = 2;
+      supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
+      mandatoryFeatures = [];
+      sshUser = "${user}";
+      sshKey = "${path_to_remotebuilder_key}";
+      publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0";
+    }
+  ];
+  nix.distributedBuilds = true;
+  nix.extraOptions = ''
+    builders-use-substitutes = true
+  '';
+  environment.etc."ssh/ssh_known_hosts".text = ''
+    ["${remote}"]:20220 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0
+    ["${remote}"]:20220 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtP5yuGAaMGK4GPsViPCIZvaPXN2tPoZH59i6CtPA1Vg8JzRX9g2PgFmUbNtQ9nxQhtUlVbNddCxoEKPJt+VgL/23o1DXM+EauuGOp9PijfcNqDq2jvwW1yoCnxMyA53vC7gR6CYGdu9BhQJYK9S4SaHtf4RcfUa39uWPfUCIKUyG9vB+T9p7E86O+pLBMRpAvppitFLdkxgAYZeedFUvhIQQZlTTJ7ELT3bJry5S+aBck83uZuU1guklyvCR9cZLMiAG2N4Goo/mH11kS4ytMV0AvpY2x4qY40wQvb3gGDYj53WArTkTf52yHELDbtCnjlwFW+5hJBog6CQaxy0S8eSN4MBbM2czmXh3sofwW7iB3iXr6q7IpTzcpeaiawau/OucTBnjVF+wm8C8MV3ekmEyTD+xEGQxESgJgqTLnHD3EKWm4qCTZBhq+XuazVP60eKvK5OVcIxsKHP4WO0YvP8oyjT62ur60wVKtJ2FJ3f0SAtSM2igV2KuDgdi3lek=
+   ["${remote}"]:20220 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNH+bPKgI9X7G1/MYq8fUSIkOyL2TmhH0quYlbX8fb9Z0AG6qRcNHaoFFIJaKxWEcAafo+hZNI1A9LKsY9MYXtE=
+  '';
+  programs.ssh.extraConfig = ''
+    Host "${remote}"
+        Hostname "${remote}"
+        user "${user}"
+        Port 20220
+    '';
+}
