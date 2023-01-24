@@ -5,6 +5,7 @@
     enable = true;
     extensions = with pkgs.vscode-extensions; [
       ms-vscode-remote.remote-ssh
+      rust-lang.rust-analyzer
     ];
   };
 }
