@@ -95,6 +95,7 @@
   environment.systemPackages = with pkgs;
     [
       git
+      clang
     ];
 
   system.stateVersion = "22.11";
