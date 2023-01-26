@@ -5,7 +5,7 @@
 {
   imports = [ (import ./hardware-configuration.nix) ]
     ++ [ (import ./networking.nix) ]
-    ++ [ (import ../common/remote_builder_awsarm_vedenemo_dev.nix) ];
+    ++ [ (import ../common/remote_builders.nix) ];
 
   # Bootloader.
   boot = {
