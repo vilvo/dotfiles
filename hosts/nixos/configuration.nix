@@ -1,6 +1,5 @@
 # SPDX-License-Identifier: MIT
 { config, lib, pkgs, inputs, user, ... }:
-
 {
   imports =
     [
@@ -13,7 +12,14 @@
     isNormalUser = true;
     description = "${user}";
     extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" "wireshark" ];
-    packages = with pkgs; [ firefox google-chrome pulseaudio rustup emacs ];
+    packages = with pkgs; [
+      firefox
+      google-chrome
+      pulseaudio
+      rustup
+      emacs
+      drawio
+    ];
   };
 
   services.emacs.enable = true;
