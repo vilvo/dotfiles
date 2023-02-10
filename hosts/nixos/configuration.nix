@@ -33,7 +33,6 @@
   virtualisation.libvirtd.enable = true;
   programs.dconf.enable = true;
   programs.wireshark.enable = true;
-  programs.go.enable = true;
 
   services.xserver.enable = true;
   services.xserver.autorun = false;
