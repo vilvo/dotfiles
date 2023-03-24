@@ -19,6 +19,8 @@
       rustup
       emacs
       drawio
+      micro
+      calc
     ];
   };
 
