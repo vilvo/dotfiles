@@ -18,6 +18,7 @@
       drawio
       micro
       calc
+      rustup
     ];
   };
 
