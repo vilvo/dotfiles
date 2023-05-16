@@ -8,6 +8,7 @@
       url = "github:nix-community/home-manager";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
   };
 
   outputs = inputs@{ self, home-manager, nixpkgs, ... }:
@@ -17,6 +18,10 @@
         import ./hosts {
           inherit (nixpkgs) lib;
           inherit inputs nixpkgs home-manager user;
-        });
+          modules = [({pkgs, ...}: {
+            nixpkgs.overlays = [ inputs.nixpkgs-wayland.overlay ];
+          })];
+        }
+      );
     };
 }
