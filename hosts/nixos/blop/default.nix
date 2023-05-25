@@ -6,10 +6,10 @@
   imports = [ (import ./hardware-configuration.nix) ]
     ++ [ (import ./networking.nix) ];
 
-  environment.systemPackages = with pkgs; [ linux-firmware foot ];
+  environment.systemPackages = with pkgs; [ linux-firmware alacritty ];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  services.xserver.videoDrivers = [ "nvidia" ];
+  services.xserver.videoDrivers = [ "amdgpu" ];
   hardware.opengl.enable = true;
   hardware.nvidia.modesetting.enable = true;
 
