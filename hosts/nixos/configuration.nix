@@ -19,10 +19,13 @@
       micro
       calc
       rustup
+      exa
+      starship
     ];
   };
 
   services.emacs.enable = true;
+  services.openssh.enable = true;
 
   time.timeZone = "Europe/Helsinki";
 
@@ -135,6 +138,4 @@
       git
       clang
     ];
-
-  system.stateVersion = "22.11";
 }
