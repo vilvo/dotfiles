@@ -21,6 +21,10 @@
       rustup
       exa
       starship
+      slack
+      signal-desktop
+      screen
+      pciutils
     ];
   };
 
@@ -39,6 +43,7 @@
   services.xserver.enable = true;
   services.xserver.autorun = false;
   services.xserver.displayManager.startx.enable = true;
+  programs.xwayland.enable = true;
 
   # nmcli device wifi connect <SSID> password <password>
   networking.networkmanager.enable = true;
