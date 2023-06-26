@@ -4,7 +4,7 @@
 
 {
   imports = [ (import ./hardware-configuration.nix) ];
-
+  nix = {
     buildMachines = [
       {
         hostName = "192.168.1.195";
@@ -25,6 +25,7 @@
         publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0";
      }
     ];
+  };
 
   # nix remote builders also require root accepted host key to avoid:
   # "Host key verification failed"

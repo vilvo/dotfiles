@@ -14,6 +14,7 @@
       google-chrome
       pulseaudio
       rustup
+      pkg-config
       emacs
       drawio
       micro
