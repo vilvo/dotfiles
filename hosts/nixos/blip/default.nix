@@ -15,15 +15,15 @@
         sshKey = "/home/vilvo/.ssh/m1_nixos";
         publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIJbtUwpDSCLntv2ePOlwrpFeMkXSVrT76umd4rf5LGai";
       }
-      {
-        hostName = "nixremote";
-        system = "aarch64-linux";
-        maxJobs = 4;
-        sshUser = "vilvo";
-        supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
-        sshKey = "/home/vilvo/.ssh/id_ed25519_arm_cloud";
-        publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0";
-     }
+#      {
+#        hostName = "nixremote";
+#        system = "aarch64-linux";
+#        maxJobs = 4;
+#        sshUser = "vilvo";
+#        supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
+#        sshKey = "/home/vilvo/.ssh/id_ed25519_arm_cloud";
+#        publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0";
+#      }
     ];
   };
 
