@@ -26,6 +26,7 @@
       signal-desktop
       screen
       pciutils
+      graphviz
     ];
   };
 
