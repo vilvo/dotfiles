@@ -6,23 +6,23 @@
   imports = [ (import ./hardware-configuration.nix) ];
   nix = {
     buildMachines = [
-      {
-        hostName = "192.168.1.195";
-        system = "aarch64-linux";
-        maxJobs = 1;
-        sshUser = "vilvo";
-        supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
-        sshKey = "/home/vilvo/.ssh/m1_nixos";
-        publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIJbtUwpDSCLntv2ePOlwrpFeMkXSVrT76umd4rf5LGai";
-      }
+      #{
+      #  hostName = "192.168.1.195";
+      #  system = "aarch64-linux";
+      #  maxJobs = 1;
+      #  sshUser = "vilvo";
+      #  supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
+      #  sshKey = "/home/vilvo/.ssh/m1_nixos";
+      #  publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIJbtUwpDSCLntv2ePOlwrpFeMkXSVrT76umd4rf5LGai";
+      #}
       {
         hostName = "192.168.1.149";
         system = "aarch64-linux";
-        maxJobs = 1;
+        maxJobs = 4;
         sshUser = "vilvo";
         supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
         sshKey = "/home/vilvo/.ssh/id_ed25519";
-        publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIG0dLyVbkWzIWnehIiUNllOxj2mrpUay8rtECIVLt4xk";
+        publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIPK1VmVasHa7U86AEJZkIt8il0xI9CFZ4t+bClJyOYmv";
       }
 #      {
 #        hostName = "nixremote";
@@ -49,8 +49,8 @@
   [127.0.0.1]:21004 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIMgbg/ApkYS2W2oM+CkFiCDnbHYGJAZGvtz6vcW28T1l
   [127.0.0.1]:21004 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQDJxr6B3RabL6gcfaTWl4s1LjJup61nXXH6GSrpM5aIkn3XR7zmbY6jfpgsQT+0tB/XNXFACzKB0utf4oEiC+j5gykh/37LB++vcg3eflm69AbvLD27NXfBuPk5R8uQ85F1PTKYcmoD/49BlEJl5qxPMb3SUADevQFULfDXz2MeaUzqhm7LfKPHYumFYaddTRNSvgAsAZLYcwoJKL9awzhTBWRdLD77GyyoFwOS69KMp/vKVQZtx4PJIINOVc6HVYIU4R/Dty4EQarGco/phByt/BTNCQbqa8eSu8cpAcU4lvNPsW0QXFMXD+ewE0ccwgs0HCjx0G1X7RikNnWnFFkh3/z9byZxIf8XHrqrY9YPCAlV5Iww4K3MoDxcdlHsjnHdAZAOT++6Z9bNJkFekrTfzSZRwyPB8Ad6LrIkYx4HS0f2SdKCIqaSVDDy8eat29nlMZnu3Mg4RUSEyMiOmvdsJH2249+TETzZIHuk64Wd0+w1IWRzZXBMDnRYvldl/xk=
   [127.0.0.1]:21004 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBDXvdrdmu+8A04FF2pZLanbA6a4w0PjLGL7vrIIdI36WUNxxi2kGy3Pg9vllBY0a+CGRK99z1XlZCZ3FwithV/w=
-  192.168.1.149 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIG0dLyVbkWzIWnehIiUNllOxj2mrpUay8rtECIVLt4xk
-  192.168.1.149 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQCbcOXkm0HyQRdYnZPvGKzOGCc+IIQ5xOGwhiCMn4EFCw86zRG6KLMuhjjwX0mm0bBeb1RSSXTPonmDFLp9AbPO+2Z+Deni0THnRcMdx99nwjW00ZZ6TMsle7FRT/gVM6NK+vgkAO2DNEeaLtYwVIkxQShbreGZJptzIqUIxTnTojV4cIIvRni7ggQP51QHHqAMzE3o0fmL4wOGkJREvUDvzAcltJ2/haN/jgAj7SP6XIZ7QyQ8JilfZwoga6Y7Gm6Hr9UgZtz7iA8c+etN6IuUvAc8YaWoYzn67FJUFRG2Al7vZ/9NtolGWzMT5RSsJ6/jJ6dc46AcXI+AQ7tSs1B5ERLnEJszWbl23l0PZbbzl21QOO0wAIzrX6g6qck84qxRIgO3VV8ko4kEb+yrHj9MtJ8CyHQB4QNOWqLeIW6uohkLlC6R+ydqMiJ56VcJjxWWUS4HjqNGQ6IVzaYB1wC4qjSV+EABapE9+N7cTH4h8lQMg6kpz11Hzhb8mPBUVcPva7E+EzB5v/Tj9OZJG2b+52aofWGLh3jkj+ikuVbydpg+flhn0GyQumchuiWDoFInNYFdUOqjE9amIBC1lUfG77wI8ym4v9Q1u/Ote0w7ApXdfeCBwsifpBO99tQSH1ETag8rMK3b/b3asQLL7FtORWv6wPq7b1ATcbBemVfVMQ==
+  192.168.1.149 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAACAQDJNQPXmfzavdOguKet5Tp4fC5DqmLy2WLHKf3bZThkNLV4zGvAL48en/iTeEq6j07JhOf5O41slJyT3ajJ5PzP1SvPBgmo9Sp51KpIGn8reySRxh9n970HSnLZ2PLviQXmjCcja6UUdkOC/kJ5fCZ208MT0nLfSyIdTuj8/U8E0l+X8omh02Plc25XMUTwusGMc8UHj2pzzixz2Jo07+nmu/my7mdCMBGXr7/+g/0/MVW6EdoHtbivVonJcn6q77beEuUiw/siUtafu0wcyoF0kIQ4y3jvaWLykwJoCPpvYz0gutaA+5GvH5TgU8ssKMClZvRbUEnD2gcWNYdSPieqIyo9ehvM9jMzIY8pQ+kjQH0ZA56WULX1Bp1z9T0yqqbNvsfg/irSfnhzBn4KgoRLJPd+G5r2pxVdHjaX12x2wDrjbpvKbB7+AzbqeeAt0TEJcvEaooTvua6U0k7sMr4MGj628eTyoO5ZgGqLVYLP7esK1/VYNJt4L9y2tBJgJ85+lMwqctQXdrfa4KxfqypR9rJ2erAhwj+pUqYuIxar+3wynddp/vhH6YYks//N/2QWYe+pDv+NWfiXsV3zIL1F2L/lRuCGIsdpv5OcrOTbDOYaZyq3sek0ymwUDOCt9vwU1i57X8qoq9DozOgn9YmmC7Z4ZvZ4q4uCPB/w6vD8sw==
+  192.168.1.149 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIPK1VmVasHa7U86AEJZkIt8il0xI9CFZ4t+bClJyOYmv
   '';
   # Bootloader.
   boot = {
