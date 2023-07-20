@@ -27,6 +27,7 @@
       screen
       pciutils
       graphviz
+      vscode
     ];
   };
 
