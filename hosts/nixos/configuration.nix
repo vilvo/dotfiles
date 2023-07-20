@@ -13,13 +13,10 @@
       firefox
       google-chrome
       pulseaudio
-      rustup
-      pkg-config
       emacs
       drawio
       micro
       calc
-      rustup
       exa
       starship
       slack
