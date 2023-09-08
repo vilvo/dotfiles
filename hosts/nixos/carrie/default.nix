@@ -1,15 +1,15 @@
 # SPDX-License-Identifier: MIT
 
-{ pkgs, lib, user, ... }:
+{ pkgs, user, ... }:
 
 {
-  imports = [ (import ./hardware-configuration.nix) ];
+  imports = [
+    ./hardware-configuration.nix
+    ../profiles/bootloader.nix
+  ];
 
   environment.systemPackages = with pkgs; [ linux-firmware alacritty ];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
-
-  hardware.opengl.enable = true;
-  hardware.nvidia.modesetting.enable = true;
 
   users.users.${user} = {
     openssh.authorizedKeys.keys = [
@@ -18,12 +18,4 @@
   };
 
   system.stateVersion = "23.05";
-
-  # Bootloader.
-  boot = {
-    kernelPackages = pkgs.linuxPackages_latest;
-    loader.systemd-boot.enable = true;
-    loader.systemd-boot.configurationLimit = 5;
-    loader.efi.canTouchEfiVariables = true;
-  };
 }

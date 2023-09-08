@@ -7,6 +7,7 @@
   networking.hostName = "carrie";
   imports =
     [ (modulesPath + "/installer/scan/not-detected.nix")
+      ../profiles/bootloader.nix
     ];
 
   boot.initrd.availableKernelModules = [ "xhci_pci" "thunderbolt" "nvme" "usb_storage" "sd_mod" "rtsx_pci_sdmmc" ];
@@ -14,6 +15,9 @@
   boot.kernelModules = [ "kvm-intel" ];
   boot.kernelParams = [ "i915.force_probe=9a60" ];
   boot.extraModulePackages = [ ];
+
+  hardware.opengl.enable = true;
+  hardware.nvidia.modesetting.enable = true;
 
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/9d99ad26-3dc6-4261-916e-a715cdf3a0e6";

@@ -1,5 +1,8 @@
 # SPDX-License-Identifier: MIT
 { config, lib, pkgs, inputs, user, ... }:
+let
+   swayconfig = pkgs.callPackage ./profiles/sway.nix {};
+in
 {
   imports = [ ];
 
@@ -49,6 +52,7 @@
   networking.networkmanager.enable = true;
 
   services.dbus.enable = true;
+
   xdg.portal = {
     enable = true;
     wlr.enable = true;
@@ -68,6 +72,11 @@
     ];
     wrapperFeatures.gtk = true;
   };
+
+  system.userActivationScripts.linkswayconfig.text = ''
+    ln -fs ${swayconfig}/config "$HOME/.config/sway/config"
+    ln -fs ${swayconfig}/status.sh "$HOME/.config/sway/status.sh"
+  '';
 
   console.keyMap = "fi";
   sound.enable = true;
