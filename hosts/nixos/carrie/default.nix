@@ -6,7 +6,14 @@
   imports = [
     ./hardware-configuration.nix
     ../profiles/bootloader.nix
+    ../builders/known_host_nvidia_orin_agx.nix
   ];
+
+  nix = {
+    buildMachines = [
+      (import ../builders/local-nvidia-orin-agx.nix)
+    ];
+  };
 
   environment.systemPackages = with pkgs; [ linux-firmware alacritty ];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
