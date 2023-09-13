@@ -2,9 +2,12 @@
 { config, lib, pkgs, inputs, user, ... }:
 let
    swayconfig = pkgs.callPackage ./profiles/sway.nix {};
+   emacsconfig = pkgs.callPackage ./profiles/emacs.nix {};
 in
 {
-  imports = [ ];
+  imports = [
+    ./aliases.nix
+  ];
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
@@ -73,9 +76,11 @@ in
     wrapperFeatures.gtk = true;
   };
 
-  system.userActivationScripts.linkswayconfig.text = ''
+  system.userActivationScripts.linkconfigs.text = ''
     ln -fs ${swayconfig}/config "$HOME/.config/sway/config"
     ln -fs ${swayconfig}/status.sh "$HOME/.config/sway/status.sh"
+
+    ln -fs ${emacsconfig}/.config "$HOME/.emacs"
   '';
 
   console.keyMap = "fi";
