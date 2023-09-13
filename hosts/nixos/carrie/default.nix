@@ -7,11 +7,13 @@
     ./hardware-configuration.nix
     ../profiles/bootloader.nix
     ../builders/known_host_nvidia_orin_agx.nix
+    ../builders/known_host_apple-m1.nix
   ];
 
   nix = {
     buildMachines = [
-      (import ../builders/local-nvidia-orin-agx.nix)
+      #(import ../builders/local-nvidia-orin-agx.nix)
+      (import ../builders/local-apple-m1.nix)
     ];
   };
 
