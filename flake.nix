@@ -5,6 +5,7 @@
   inputs = {
     nixpkgs.url = "github:nixos/nixpkgs/nixos-23.05";
     nixpkgs-wayland.url = "github:nix-community/nixpkgs-wayland";
+    emacs-overlay.url = "github:nix-community/emacs-overlay";
   };
 
   outputs = inputs@{ self, nixpkgs, ... }:
@@ -27,7 +28,10 @@
                 ];
               };
             };
-            nixpkgs.overlays = [ inputs.nixpkgs-wayland.overlay ];
+            nixpkgs.overlays = [
+	      inputs.nixpkgs-wayland.overlay
+	      (import self.inputs.emacs-overlay)
+	    ];
           })];
         }
       );
