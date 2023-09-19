@@ -9,6 +9,13 @@ in
     ./aliases.nix
   ];
 
+  system.userActivationScripts.linkconfigs.text = ''
+    ln -fs ${swayconfig}/config "$HOME/.config/sway/config"
+    ln -fs ${swayconfig}/status.sh "$HOME/.config/sway/status.sh"
+
+    ln -fs ${emacsconfig}/.config "$HOME/.emacs"
+  '';
+
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   users.users."${user}" = {
@@ -19,7 +26,6 @@ in
       firefox
       google-chrome
       pulseaudio
-      emacs
       drawio
       micro
       calc
@@ -31,6 +37,8 @@ in
       pciutils
       graphviz
       vscode
+      emacs
+      rustup
     ];
   };
 
@@ -75,13 +83,6 @@ in
     ];
     wrapperFeatures.gtk = true;
   };
-
-  system.userActivationScripts.linkconfigs.text = ''
-    ln -fs ${swayconfig}/config "$HOME/.config/sway/config"
-    ln -fs ${swayconfig}/status.sh "$HOME/.config/sway/status.sh"
-
-    ln -fs ${emacsconfig}/.config "$HOME/.emacs"
-  '';
 
   console.keyMap = "fi";
   sound.enable = true;
