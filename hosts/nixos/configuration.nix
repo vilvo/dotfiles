@@ -13,7 +13,7 @@ in
     ln -fs ${swayconfig}/config "$HOME/.config/sway/config"
     ln -fs ${swayconfig}/status.sh "$HOME/.config/sway/status.sh"
 
-    ln -fs ${emacsconfig}/.config "$HOME/.emacs"
+    ln -fs ${emacsconfig}/.emacs "$HOME/.emacs"
   '';
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
