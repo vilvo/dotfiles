@@ -24,15 +24,12 @@ in
     extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" "wireshark" ];
     packages = with pkgs; [
       firefox
-      google-chrome
       pulseaudio
       drawio
       micro
       calc
       exa
       starship
-      slack
-      signal-desktop
       screen
       pciutils
       graphviz

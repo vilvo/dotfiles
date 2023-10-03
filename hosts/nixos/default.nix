@@ -1,6 +1,6 @@
 # SPDX-License-Identifier: MIT
 
-{ lib, inputs, nixpkgs, user, ... }:
+{ lib, inputs, nixpkgs, user, apple-silicon, ... }:
 
 let
   system = "x86_64-linux";
@@ -45,6 +45,16 @@ in {
       ./carrie
       ./configuration.nix
       ./networking.nix
+    ];
+  };
+
+  blub = lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = { inherit inputs user; };
+    modules = [
+      apple-silicon.nixosModules.apple-silicon-support
+      ./blub
+      ./configuration.nix
     ];
   };
 }
