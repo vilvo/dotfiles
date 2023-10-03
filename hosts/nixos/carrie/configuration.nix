@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
   ];
@@ -16,6 +18,4 @@
   services.openssh.enable = true;
 
   system.stateVersion = "23.05";
-
 }
-

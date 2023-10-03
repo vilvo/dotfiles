@@ -1,9 +1,6 @@
-{ pkgs, ... }:
-{
+{pkgs, ...}: {
   home = {
-    packages = with pkgs;
-      [
-      ];
+    packages = with pkgs; [
+    ];
   };
-
 }

@@ -1,8 +1,12 @@
 # SPDX-License-Identifier: MIT
-
-{ lib, inputs, nixpkgs, user, apple-silicon, ... }:
-
-let
+{
+  lib,
+  inputs,
+  nixpkgs,
+  user,
+  apple-silicon,
+  ...
+}: let
   system = "x86_64-linux";
 
   # ssh private key path for remote builds
@@ -17,10 +21,9 @@ let
 
   lib = nixpkgs.lib;
 in {
-
   blop = lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs user; };
+    specialArgs = {inherit inputs user;};
     modules = [
       ./blop
       ./configuration.nix
@@ -30,7 +33,7 @@ in {
 
   blip = lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs user path_to_remotebuilder_key; };
+    specialArgs = {inherit inputs user path_to_remotebuilder_key;};
     modules = [
       ./blip
       ./configuration.nix
@@ -40,7 +43,7 @@ in {
 
   carrie = lib.nixosSystem {
     inherit system;
-    specialArgs = { inherit inputs user; };
+    specialArgs = {inherit inputs user;};
     modules = [
       ./carrie
       ./configuration.nix
@@ -50,7 +53,7 @@ in {
 
   blub = lib.nixosSystem {
     system = "aarch64-linux";
-    specialArgs = { inherit inputs user; };
+    specialArgs = {inherit inputs user;};
     modules = [
       apple-silicon.nixosModules.apple-silicon-support
       ./blub

@@ -13,16 +13,27 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
     emacs-overlay.url = "github:nix-community/emacs-overlay";
+    alejandra = {
+      url = "github:kamadorueda/alejandra/3.0.0";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
-  outputs = inputs@{ self, nixpkgs, apple-silicon, ... }:
-    let user = "vilvo";
-    in {
-      nixosConfigurations = (
-        import ./hosts {
-          inherit (nixpkgs) lib;
-          inherit inputs nixpkgs user apple-silicon;
-          modules = [({pkgs, ...}: {
+  outputs = inputs @ {
+    self,
+    nixpkgs,
+    apple-silicon,
+    alejandra,
+    ...
+  }: let
+    user = "vilvo";
+  in {
+    nixosConfigurations = (
+      import ./hosts {
+        inherit (nixpkgs) lib;
+        inherit inputs nixpkgs user apple-silicon;
+        modules = [
+          ({pkgs, ...}: {
             config = {
               nix.settings = {
                 trusted-public-keys = [
@@ -36,11 +47,12 @@
               };
             };
             nixpkgs.overlays = [
-	      inputs.nixpkgs-wayland.overlay
-	      (import self.inputs.emacs-overlay)
-	    ];
-          })];
-        }
-      );
-    };
+              inputs.nixpkgs-wayland.overlay
+              (import self.inputs.emacs-overlay)
+            ];
+          })
+        ];
+      }
+    );
+  };
 }

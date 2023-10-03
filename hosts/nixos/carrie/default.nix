@@ -1,8 +1,9 @@
 # SPDX-License-Identifier: MIT
-
-{ pkgs, user, ... }:
-
 {
+  pkgs,
+  user,
+  ...
+}: {
   imports = [
     ./hardware-configuration.nix
     ../profiles/bootloader.nix
@@ -17,7 +18,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [ linux-firmware alacritty ];
+  environment.systemPackages = with pkgs; [linux-firmware alacritty];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   users.users.${user} = {

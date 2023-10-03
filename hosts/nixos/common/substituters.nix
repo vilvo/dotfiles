@@ -1,6 +1,4 @@
-{ ... }:
-
-{
+{...}: {
   nix.settings.substituters = [
     "https://cache.vedenemo.dev"
   ];

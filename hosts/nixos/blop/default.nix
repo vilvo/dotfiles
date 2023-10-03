@@ -1,14 +1,16 @@
 # SPDX-License-Identifier: MIT
-
-{ pkgs, lib, user, ... }:
-
 {
-  imports = [ (import ./hardware-configuration.nix) ];
+  pkgs,
+  lib,
+  user,
+  ...
+}: {
+  imports = [(import ./hardware-configuration.nix)];
 
-  environment.systemPackages = with pkgs; [ linux-firmware alacritty ];
+  environment.systemPackages = with pkgs; [linux-firmware alacritty];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
-  services.xserver.videoDrivers = [ "amdgpu" ];
+  services.xserver.videoDrivers = ["amdgpu"];
   hardware.opengl.enable = true;
   hardware.nvidia.modesetting.enable = true;
 
@@ -25,15 +27,15 @@
 
   nix = {
     buildMachines = [
-    {
-      hostName = "172.18.8.200";
-      system = "aarch64-linux";
-      maxJobs = 1;
-      sshUser = "vilvo";
-      supportedFeatures = [ "kvm" "benchmark" "big-parallel" "nixos-test" ];
-      sshKey = "/home/vilvo/.ssh/m1_nixos";
-      publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIJbtUwpDSCLntv2ePOlwrpFeMkXSVrT76umd4rf5LGai";
-    }
+      {
+        hostName = "172.18.8.200";
+        system = "aarch64-linux";
+        maxJobs = 1;
+        sshUser = "vilvo";
+        supportedFeatures = ["kvm" "benchmark" "big-parallel" "nixos-test"];
+        sshKey = "/home/vilvo/.ssh/m1_nixos";
+        publicHostKey = "AAAAC3NzaC1lZDI1NTE5AAAAIJbtUwpDSCLntv2ePOlwrpFeMkXSVrT76umd4rf5LGai";
+      }
     ];
   };
 

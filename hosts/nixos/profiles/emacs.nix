@@ -1,21 +1,24 @@
-{ stdenvNoCC, lib, }:
-  stdenvNoCC.mkDerivation {
-    name = "custom-emacs-config";
+{
+  stdenvNoCC,
+  lib,
+}:
+stdenvNoCC.mkDerivation {
+  name = "custom-emacs-config";
 
-    src = ./emacs;
+  src = ./emacs;
 
-    phases = [ "installPhase" ];
+  phases = ["installPhase"];
 
-    installPhase = ''
-      mkdir -p $out
-      cp $src/.emacs $out
-    '';
+  installPhase = ''
+    mkdir -p $out
+    cp $src/.emacs $out
+  '';
 
-    meta = with lib; {
-      description = "vilvo's emacs config";
-      platforms = [
-        "x86_64-linux"
-        "aarch64-linux"
-      ];
-    };
+  meta = with lib; {
+    description = "vilvo's emacs config";
+    platforms = [
+      "x86_64-linux"
+      "aarch64-linux"
+    ];
+  };
 }

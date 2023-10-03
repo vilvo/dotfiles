@@ -1,10 +1,15 @@
 # SPDX-License-Identifier: MIT
-{ config, lib, pkgs, inputs, user, ... }:
-let
-   swayconfig = pkgs.callPackage ./profiles/sway.nix {};
-   emacsconfig = pkgs.callPackage ./profiles/emacs.nix {};
-in
 {
+  config,
+  lib,
+  pkgs,
+  inputs,
+  user,
+  ...
+}: let
+  swayconfig = pkgs.callPackage ./profiles/sway.nix {};
+  emacsconfig = pkgs.callPackage ./profiles/emacs.nix {};
+in {
   imports = [
     ./aliases.nix
   ];
@@ -21,7 +26,7 @@ in
   users.users."${user}" = {
     isNormalUser = true;
     description = "${user}";
-    extraGroups = [ "networkmanager" "wheel" "dialout" "libvirtd" "wireshark" ];
+    extraGroups = ["networkmanager" "wheel" "dialout" "libvirtd" "wireshark"];
     packages = with pkgs; [
       firefox
       pulseaudio
@@ -65,7 +70,7 @@ in
     enable = true;
     wlr.enable = true;
     # gtk portal needed to make gtk apps happy
-    extraPortals = [ pkgs.xdg-desktop-portal-gtk ];
+    extraPortals = [pkgs.xdg-desktop-portal-gtk];
   };
 
   programs.sway = {
@@ -98,10 +103,11 @@ in
 
   nix = {
     settings = {
-      trusted-users = [ "root" "vilvo" ];
+      trusted-users = ["root" "vilvo"];
       auto-optimise-store = true;
     };
-    gc = { # Automatic garbage collection
+    gc = {
+      # Automatic garbage collection
       automatic = true;
       dates = "weekly";
       options = "--delete-older-than 7d";
@@ -118,16 +124,16 @@ in
   # see https://github.com/NixOS/nix/issues/2030#issuecomment-1289522180
   # following is the output of: $ ssh-keyscan <host>
   environment.etc."ssh/ssh_known_hosts".text = ''
-  [awsarm.vedenemo.dev]:20220 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0
-  [awsarm.vedenemo.dev]:20220 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtP5yuGAaMGK4GPsViPCIZvaPXN2tPoZH59i6CtPA1Vg8JzRX9g2PgFmUbNtQ9nxQhtUlVbNddCxoEKPJt+VgL/23o1DXM+EauuGOp9PijfcNqDq2jvwW1yoCnxMyA53vC7gR6CYGdu9BhQJYK9S4SaHtf4RcfUa39uWPfUCIKUyG9vB+T9p7E86O+pLBMRpAvppitFLdkxgAYZeedFUvhIQQZlTTJ7ELT3bJry5S+aBck83uZuU1guklyvCR9cZLMiAG2N4Goo/mH11kS4ytMV0AvpY2x4qY40wQvb3gGDYj53WArTkTf52yHELDbtCnjlwFW+5hJBog6CQaxy0S8eSN4MBbM2czmXh3sofwW7iB3iXr6q7IpTzcpeaiawau/OucTBnjVF+wm8C8MV3ekmEyTD+xEGQxESgJgqTLnHD3EKWm4qCTZBhq+XuazVP60eKvK5OVcIxsKHP4WO0YvP8oyjT62ur60wVKtJ2FJ3f0SAtSM2igV2KuDgdi3lek=
-  [awsarm.vedenemo.dev]:20220 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNH+bPKgI9X7G1/MYq8fUSIkOyL2TmhH0quYlbX8fb9Z0AG6qRcNHaoFFIJaKxWEcAafo+hZNI1A9LKsY9MYXtE=
+    [awsarm.vedenemo.dev]:20220 ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIL3f7tAAO3Fc+8BqemsBQc/Yl/NmRfyhzr5SFOSKqrv0
+    [awsarm.vedenemo.dev]:20220 ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABgQCtP5yuGAaMGK4GPsViPCIZvaPXN2tPoZH59i6CtPA1Vg8JzRX9g2PgFmUbNtQ9nxQhtUlVbNddCxoEKPJt+VgL/23o1DXM+EauuGOp9PijfcNqDq2jvwW1yoCnxMyA53vC7gR6CYGdu9BhQJYK9S4SaHtf4RcfUa39uWPfUCIKUyG9vB+T9p7E86O+pLBMRpAvppitFLdkxgAYZeedFUvhIQQZlTTJ7ELT3bJry5S+aBck83uZuU1guklyvCR9cZLMiAG2N4Goo/mH11kS4ytMV0AvpY2x4qY40wQvb3gGDYj53WArTkTf52yHELDbtCnjlwFW+5hJBog6CQaxy0S8eSN4MBbM2czmXh3sofwW7iB3iXr6q7IpTzcpeaiawau/OucTBnjVF+wm8C8MV3ekmEyTD+xEGQxESgJgqTLnHD3EKWm4qCTZBhq+XuazVP60eKvK5OVcIxsKHP4WO0YvP8oyjT62ur60wVKtJ2FJ3f0SAtSM2igV2KuDgdi3lek=
+    [awsarm.vedenemo.dev]:20220 ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBNH+bPKgI9X7G1/MYq8fUSIkOyL2TmhH0quYlbX8fb9Z0AG6qRcNHaoFFIJaKxWEcAafo+hZNI1A9LKsY9MYXtE=
   '';
 
   nixpkgs.config.allowUnfree = true;
 
-  environment.systemPackages = with pkgs;
-    [
-      git
-      clang
-    ];
+  environment.systemPackages = with pkgs; [
+    git
+    clang
+    alejandra
+  ];
 }

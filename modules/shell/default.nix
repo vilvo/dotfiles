@@ -1,1 +1,1 @@
-[ ./basic.nix ]
+[./basic.nix]
