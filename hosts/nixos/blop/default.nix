@@ -10,9 +10,11 @@
   environment.systemPackages = with pkgs; [linux-firmware alacritty];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
+  networking.interfaces.eth0.useDHCP = true;
+  networking.hostName = "blop";
+
   services.xserver.videoDrivers = ["amdgpu"];
   hardware.opengl.enable = true;
-  hardware.nvidia.modesetting.enable = true;
 
   users.users.${user} = {
     openssh.authorizedKeys.keys = [
