@@ -27,7 +27,6 @@ in {
     modules = [
       ./blop
       ./configuration.nix
-      ./networking.nix
     ];
   };
 
@@ -37,7 +36,6 @@ in {
     modules = [
       ./blip
       ./configuration.nix
-      ./networking.nix
     ];
   };
 
@@ -47,7 +45,6 @@ in {
     modules = [
       ./carrie
       ./configuration.nix
-      ./networking.nix
     ];
   };
 
