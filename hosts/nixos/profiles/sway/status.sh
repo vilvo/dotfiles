@@ -9,7 +9,7 @@ battery_status="100"
 if [[ $host = "blip" ]] || [[ $host = "carrie" ]]
 then
     battery_status=$(cat /sys/class/power_supply/BAT0/capacity)
-elif [[ $host = "blub" ]]
+elif [[ $host = "blub" ]] || [[ $host = "blib" ]]
 then
     battery_status=$(cat /sys/class/power_supply/macsmc-battery/capacity)
 fi
