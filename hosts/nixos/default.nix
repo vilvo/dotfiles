@@ -57,4 +57,14 @@ in {
       ./configuration.nix
     ];
   };
+
+  blib = lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = {inherit inputs user;};
+    modules = [
+      apple-silicon.nixosModules.apple-silicon-support
+      ./blib
+      ./configuration.nix
+    ];
+  };
 }
