@@ -9,12 +9,21 @@
     ../profiles/bootloader.nix
     ../builders/known_host_nvidia_orin_agx.nix
     ../builders/known_host_apple-m1.nix
+    ./packages.nix
   ];
+
+  services = {
+    printing.enable = true;
+    avahi = {
+      enable = true;
+      nssmdns = true;
+    };
+  };
 
   nix = {
     buildMachines = [
       #(import ../builders/local-nvidia-orin-agx.nix)
-      (import ../builders/local-apple-m1.nix)
+      #(import ../builders/local-apple-m1.nix)
     ];
   };
 
