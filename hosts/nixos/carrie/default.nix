@@ -22,7 +22,7 @@
 
   nix = {
     buildMachines = [
-      #(import ../builders/local-nvidia-orin-agx.nix)
+      (import ../builders/local-nvidia-orin-agx.nix)
       #(import ../builders/local-apple-m1.nix)
     ];
   };
