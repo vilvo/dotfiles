@@ -42,6 +42,7 @@ in {
       emacs
       rustup
       tree
+      htop
     ];
   };
 
