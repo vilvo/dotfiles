@@ -41,6 +41,7 @@ in {
       vscode
       emacs
       rustup
+      tree
     ];
   };
 
