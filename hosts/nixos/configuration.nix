@@ -43,6 +43,7 @@ in {
       rustup
       tree
       htop
+      nix-tree
     ];
   };
 
