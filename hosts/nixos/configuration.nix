@@ -44,6 +44,7 @@ in {
       tree
       htop
       nix-tree
+      direnv
     ];
   };
 
