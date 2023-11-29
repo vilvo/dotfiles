@@ -68,7 +68,13 @@ in {
   programs.xwayland.enable = true;
 
   # nmcli device wifi connect <SSID> password <password>
-  networking.networkmanager.enable = true;
+  networking = {
+    networkmanager = {
+      enable = true;
+      # for adguardhome
+      insertNameservers = [ "127.0.0.1" ];
+    };
+  };
 
   services.dbus.enable = true;
 
