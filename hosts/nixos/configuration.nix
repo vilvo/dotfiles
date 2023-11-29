@@ -51,6 +51,7 @@ in {
 
   services.emacs.enable = true;
   services.openssh.enable = true;
+  services.adguardhome.enable = true;
 
   time.timeZone = "Europe/Helsinki";
 
