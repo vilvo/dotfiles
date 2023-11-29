@@ -12,6 +12,7 @@
 in {
   imports = [
     ./aliases.nix
+    ../../modules/networking/blocked_hosts.nix
   ];
 
   system.userActivationScripts.linkconfigs.text = ''
