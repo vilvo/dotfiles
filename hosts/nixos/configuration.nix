@@ -46,6 +46,7 @@ in {
       htop
       nix-tree
       direnv
+      usbutils
     ];
   };
 
