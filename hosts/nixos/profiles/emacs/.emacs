@@ -13,3 +13,6 @@
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
 
 (setq column-number-mode t)
+
+(setq-default auto-fill-function 'do-auto-fill)
+(set-fill-column 80)
