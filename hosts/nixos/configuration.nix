@@ -34,7 +34,6 @@ in {
       drawio
       micro
       calc
-      exa
       starship
       screen
       pciutils
