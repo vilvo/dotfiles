@@ -191,6 +191,26 @@
         "type": "github"
       }
     },
+    "jetpack-nixos": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1702316505,
+        "narHash": "sha256-ue7h47DG+ltIs1kfYdcvt4faqoqLYcct11I69gj3P1Y=",
+        "owner": "anduril",
+        "repo": "jetpack-nixos",
+        "rev": "74880473fa4f9b69d97d81128de6437d6a068df2",
+        "type": "github"
+      },
+      "original": {
+        "owner": "anduril",
+        "repo": "jetpack-nixos",
+        "type": "github"
+      }
+    },
     "lib-aggregate": {
       "inputs": {
         "flake-utils": "flake-utils_2",
@@ -360,6 +380,7 @@
         "alejandra": "alejandra",
         "apple-silicon": "apple-silicon",
         "emacs-overlay": "emacs-overlay",
+        "jetpack-nixos": "jetpack-nixos",
         "nixpkgs": "nixpkgs_2",
         "nixpkgs-wayland": "nixpkgs-wayland"
       }

@@ -5,6 +5,7 @@
   nixpkgs,
   user,
   apple-silicon,
+  jetpack-nixos,
   ...
 }: let
   system = "x86_64-linux";
@@ -65,6 +66,15 @@ in {
       apple-silicon.nixosModules.apple-silicon-support
       ./blib
       ./configuration.nix
+    ];
+  };
+
+  agx = lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = {inherit inputs user;};
+    modules = [
+      jetpack-nixos.nixosModules.default
+      ./agx
     ];
   };
 }

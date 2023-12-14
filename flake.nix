@@ -17,6 +17,10 @@
       url = "github:kamadorueda/alejandra/3.0.0";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+    jetpack-nixos = {
+      url = "github:anduril/jetpack-nixos";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
@@ -24,6 +28,7 @@
     nixpkgs,
     apple-silicon,
     alejandra,
+    jetpack-nixos,
     ...
   }: let
     user = "vilvo";
@@ -31,7 +36,7 @@
     nixosConfigurations = (
       import ./hosts {
         inherit (nixpkgs) lib;
-        inherit inputs nixpkgs user apple-silicon;
+        inherit inputs nixpkgs user apple-silicon jetpack-nixos;
         modules = [
           ({pkgs, ...}: {
             config = {
