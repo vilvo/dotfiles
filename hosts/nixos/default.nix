@@ -75,6 +75,7 @@ in {
     modules = [
       jetpack-nixos.nixosModules.default
       ./agx
+      ./configuration.nix
     ];
   };
 }

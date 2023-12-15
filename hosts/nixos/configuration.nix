@@ -16,6 +16,7 @@ in {
   ];
 
   system.userActivationScripts.linkconfigs.text = ''
+    mkdir -p "$HOME/.config/sway/"
     ln -fs ${swayconfig}/config "$HOME/.config/sway/config"
     ln -fs ${swayconfig}/status.sh "$HOME/.config/sway/status.sh"
 
