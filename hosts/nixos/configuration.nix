@@ -93,7 +93,7 @@ in {
       swaylock
       swayidle
       alacritty
-      dmenu
+      bemenu
       slurp
       grim
     ];
