@@ -13,6 +13,11 @@
   boot.kernelModules = [ ];
   boot.extraModulePackages = [ ];
 
+  hardware.asahi = {
+    peripheralFirmwareDirectory = /boot/asahi;
+    useExperimentalGPUDriver = true;
+  };
+
   fileSystems."/" =
     { device = "/dev/disk/by-uuid/df9324b0-1ef8-492a-96d3-0b29e23aa428";
       fsType = "ext4";
