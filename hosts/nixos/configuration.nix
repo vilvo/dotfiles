@@ -35,7 +35,6 @@ in {
       drawio
       micro
       calc
-      starship
       screen
       pciutils
       graphviz
@@ -47,6 +46,8 @@ in {
       nix-tree
       direnv
       usbutils
+      eza
+      starship
     ];
   };
 
