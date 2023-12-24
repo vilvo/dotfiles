@@ -83,7 +83,7 @@ in {
     system = "aarch64-linux";
     specialArgs = {inherit inputs user;};
     modules = [
-      /etc/nixos/apple-silicon-support
+      apple-silicon.nixosModules.apple-silicon-support
       ./mini
       ./configuration.nix
     ];
