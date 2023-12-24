@@ -78,4 +78,14 @@ in {
       ./configuration.nix
     ];
   };
+
+  mini = lib.nixosSystem {
+    system = "aarch64-linux";
+    specialArgs = {inherit inputs user;};
+    modules = [
+      /etc/nixos/apple-silicon-support
+      ./mini
+      ./configuration.nix
+    ];
+  };
 }
