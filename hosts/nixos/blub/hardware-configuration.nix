@@ -18,9 +18,6 @@
     useExperimentalGPUDriver = true;
   };
 
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = false;
-
   boot.initrd.availableKernelModules = ["usb_storage"];
   boot.initrd.kernelModules = ["dm-snapshot"];
   boot.initrd.luks.devices."encrypted".device = "/dev/disk/by-uuid/44935802-2deb-431f-9eb2-7205d251040d";
