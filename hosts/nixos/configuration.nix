@@ -50,6 +50,7 @@ in {
       usbutils
       eza
       starship
+      signal-desktop
     ];
   };
 
