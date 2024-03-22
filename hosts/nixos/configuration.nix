@@ -51,6 +51,7 @@ in {
       eza
       starship
       signal-desktop
+      wget
     ];
   };
 
