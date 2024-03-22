@@ -7,10 +7,13 @@
 	     '("melpa-stable" . "https://stable.melpa.org/packages/"))
 (package-initialize)
 
-;; rust-mode cloned from https://github.com/rust-lang/rust-mode
+;; modes nix-packaged and symlinked via configuration.nix
 (add-to-list 'load-path "/home/vilvo/rust-mode/")
 (autoload 'rust-mode "rust-mode" nil t)
 (add-to-list 'auto-mode-alist '("\\.rs\\'" . rust-mode))
+(add-to-list 'load-path "/home/vilvo/go-mode/")
+(autoload 'go-mode "go-mode" nil t)
+(add-to-list 'auto-mode-alist '("\\.go\\'" . go-mode))
 
 (setq column-number-mode t)
 

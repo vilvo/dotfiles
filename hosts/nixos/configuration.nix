@@ -10,6 +10,7 @@
   swayconfig = pkgs.callPackage ./profiles/sway.nix {};
   emacsconfig = pkgs.callPackage ./profiles/emacs.nix {};
   rust-mode = pkgs.callPackage ./pkgs/rust-mode/default.nix {};
+  go-mode = pkgs.callPackage ./pkgs/go-mode/default.nix {};
 in {
   imports = [
     ./aliases.nix
@@ -23,6 +24,7 @@ in {
 
     ln -fs ${emacsconfig}/.emacs "$HOME/.emacs"
     ln -fs ${rust-mode}/ "$HOME/rust-mode"
+    ln -fs ${go-mode}/ "$HOME/go-mode"
   '';
 
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
