@@ -1,4 +1,8 @@
-{stdenvNoCC,fetchFromGitHub,...}:
+{
+  stdenvNoCC,
+  fetchFromGitHub,
+  ...
+}:
 stdenvNoCC.mkDerivation {
   name = "rust-mode";
   src = fetchFromGitHub {

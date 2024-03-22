@@ -81,7 +81,7 @@ in {
     networkmanager = {
       enable = true;
       # for adguardhome
-      insertNameservers = [ "127.0.0.1" ];
+      insertNameservers = ["127.0.0.1"];
     };
   };
 

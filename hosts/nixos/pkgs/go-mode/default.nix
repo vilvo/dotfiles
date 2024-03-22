@@ -1,4 +1,8 @@
-{stdenvNoCC,fetchFromGitHub,...}:
+{
+  stdenvNoCC,
+  fetchFromGitHub,
+  ...
+}:
 stdenvNoCC.mkDerivation {
   name = "go-mode";
   src = fetchFromGitHub {
