@@ -33,9 +33,6 @@
 
   users.users.${user} = {
     openssh.authorizedKeys.keys = [
-      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIAS51BVp5fecNMh2zm72H3j8qtzW3JnWYxaw/ejQOvnX vilvo@blip"
     ];
   };
-
-  system.stateVersion = "23.05";
 }
