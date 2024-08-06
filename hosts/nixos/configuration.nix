@@ -123,6 +123,7 @@ in {
   nix = {
     settings = {
       trusted-users = ["root" "vilvo"];
+      trusted-substituters = ["vilvo"];
       auto-optimise-store = true;
     };
     gc = {
@@ -131,13 +132,11 @@ in {
       dates = "weekly";
       options = "--delete-older-than 7d";
     };
-    registry.nixpkgs.flake = inputs.nixpkgs;
     extraOptions = ''
       experimental-features = nix-command flakes
-      builders-use-substitutes = true
     '';
-    distributedBuilds = true;
   };
+
   # nix remote builders also require root accepted host key to avoid:
   # "Host key verification failed"
   # see https://github.com/NixOS/nix/issues/2030#issuecomment-1289522180
