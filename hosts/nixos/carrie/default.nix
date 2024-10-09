@@ -28,7 +28,7 @@
     ];
   };
 
-  environment.systemPackages = with pkgs; [linux-firmware alacritty];
+  environment.systemPackages = with pkgs; [linux-firmware alacritty uuu];
   environment.sessionVariables.WLR_NO_HARDWARE_CURSORS = "1";
 
   users.users.${user} = {
