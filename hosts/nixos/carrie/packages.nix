@@ -5,6 +5,10 @@
   ...
 }: {
   config = {
-    users.users."${user}".packages = [pkgs.google-chrome pkgs.signal-desktop];
+    users.users."${user}".packages = with pkgs; [
+      google-chrome
+      signal-desktop
+      openconnect
+    ];
   };
 }
