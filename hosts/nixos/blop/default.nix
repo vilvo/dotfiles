@@ -40,5 +40,6 @@
     loader.systemd-boot.configurationLimit = 5;
     loader.efi.canTouchEfiVariables = true;
     loader.efi.efiSysMountPoint = "/boot/efi";
+    binfmt.emulatedSystems = [ "aarch64-linux" ];
   };
 }
